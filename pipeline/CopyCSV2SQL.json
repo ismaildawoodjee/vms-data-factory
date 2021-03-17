@@ -15,7 +15,16 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "vms-container/test/hr_100.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.highrise"
+					}
+				],
 				"typeProperties": {
 					"source": {
 						"type": "DelimitedTextSource",
