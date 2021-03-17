@@ -1,0 +1,260 @@
+{
+	"name": "CopyCSV2SQL",
+	"properties": {
+		"description": "Copy CSV files from dashboard folder into SQL database",
+		"activities": [
+			{
+				"name": "ETL",
+				"description": "ETL from data lake into VMS database",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "date_of_sale",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "date_of_sale",
+									"type": "DateTime",
+									"physicalType": "date"
+								}
+							},
+							{
+								"source": {
+									"name": "street",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "street",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "area",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "area",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "city",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "city",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "district",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "district",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "state",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "state_place",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "sale_price",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "sale_price",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "price_psf",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "price_psf",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 5
+								}
+							},
+							{
+								"source": {
+									"name": "builtup_area_sqft",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "builtup_area_sqft",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 5
+								}
+							},
+							{
+								"source": {
+									"name": "building_type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "building_type",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "floors",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "floors",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 3
+								}
+							},
+							{
+								"source": {
+									"name": "lot_status",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "lot_status",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "lot_type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "lot_type",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ownership_type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ownership_type",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "lease_type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "lease_type",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "rooms",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "rooms",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "hr100",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "VMS_Database",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
