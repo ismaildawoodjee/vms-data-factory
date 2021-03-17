@@ -38,18 +38,6 @@
 				"precision": 10
 			},
 			{
-				"name": "price_psf",
-				"type": "decimal",
-				"precision": 5,
-				"scale": 2
-			},
-			{
-				"name": "builtup_area_sqft",
-				"type": "decimal",
-				"precision": 5,
-				"scale": 2
-			},
-			{
 				"name": "building_type",
 				"type": "varchar"
 			},
@@ -78,6 +66,18 @@
 				"name": "floors",
 				"type": "decimal",
 				"precision": 5,
+				"scale": 2
+			},
+			{
+				"name": "builtup_area_sqft",
+				"type": "decimal",
+				"precision": 7,
+				"scale": 2
+			},
+			{
+				"name": "price_psf",
+				"type": "decimal",
+				"precision": 7,
 				"scale": 2
 			}
 		],
