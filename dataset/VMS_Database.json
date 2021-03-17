@@ -9,22 +9,73 @@
 		"type": "AzureSqlTable",
 		"schema": [
 			{
-				"name": "property_id",
+				"name": "date_of_sale",
+				"type": "date"
+			},
+			{
+				"name": "street",
+				"type": "varchar"
+			},
+			{
+				"name": "area",
+				"type": "varchar"
+			},
+			{
+				"name": "city",
+				"type": "varchar"
+			},
+			{
+				"name": "district",
+				"type": "varchar"
+			},
+			{
+				"name": "state_place",
+				"type": "varchar"
+			},
+			{
+				"name": "sale_price",
 				"type": "int",
 				"precision": 10
+			},
+			{
+				"name": "price_psf",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 2
+			},
+			{
+				"name": "builtup_area_sqft",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 2
 			},
 			{
 				"name": "building_type",
 				"type": "varchar"
 			},
 			{
-				"name": "floors",
-				"type": "decimal",
-				"precision": 5,
-				"scale": 2
+				"name": "lot_status",
+				"type": "varchar"
+			},
+			{
+				"name": "lot_type",
+				"type": "varchar"
+			},
+			{
+				"name": "ownership_type",
+				"type": "varchar"
+			},
+			{
+				"name": "lease_type",
+				"type": "varchar"
 			},
 			{
 				"name": "rooms",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "floors",
 				"type": "decimal",
 				"precision": 5,
 				"scale": 2
@@ -32,7 +83,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "dim_property"
+			"table": "highrise"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
