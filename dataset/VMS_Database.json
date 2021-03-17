@@ -1,0 +1,39 @@
+{
+	"name": "VMS_Database",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "VMSDatabaseLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "property_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "building_type",
+				"type": "varchar"
+			},
+			{
+				"name": "floors",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 2
+			},
+			{
+				"name": "rooms",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "dim_property"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
