@@ -11,7 +11,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "hr_1000.csv",
+				"fileName": "hr_10000.csv",
 				"folderPath": "test",
 				"fileSystem": "vms-container"
 			},
