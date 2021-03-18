@@ -1,6 +1,7 @@
 {
-	"name": "hr1000",
+	"name": "highrise_CSV_clone",
 	"properties": {
+		"description": "Dataset for highrise.csv files for testing",
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorageLinkedService",
 			"type": "LinkedServiceReference"
