@@ -1,0 +1,90 @@
+{
+	"name": "VMS_Database_clone",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "VMSDatabaseLinkedService",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "date_of_sale",
+				"type": "date"
+			},
+			{
+				"name": "street",
+				"type": "varchar"
+			},
+			{
+				"name": "area",
+				"type": "varchar"
+			},
+			{
+				"name": "city",
+				"type": "varchar"
+			},
+			{
+				"name": "district",
+				"type": "varchar"
+			},
+			{
+				"name": "state_place",
+				"type": "varchar"
+			},
+			{
+				"name": "sale_price",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "price_psf",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "builtup_area_sqft",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "building_type",
+				"type": "varchar"
+			},
+			{
+				"name": "floors",
+				"type": "decimal",
+				"precision": 8,
+				"scale": 2
+			},
+			{
+				"name": "lot_status",
+				"type": "varchar"
+			},
+			{
+				"name": "lot_type",
+				"type": "varchar"
+			},
+			{
+				"name": "ownership_type",
+				"type": "varchar"
+			},
+			{
+				"name": "lease_type",
+				"type": "varchar"
+			},
+			{
+				"name": "rooms",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "hr1000"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
