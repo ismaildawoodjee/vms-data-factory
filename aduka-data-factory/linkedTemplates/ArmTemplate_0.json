@@ -291,6 +291,195 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/highrise_CSV_clone')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Dataset for highrise.csv files for testing",
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorageLinkedService",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "hr_1000.csv",
+						"folderPath": "test",
+						"fileSystem": "vms-container"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\"",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "date_of_sale",
+						"type": "String"
+					},
+					{
+						"name": "street",
+						"type": "String"
+					},
+					{
+						"name": "area",
+						"type": "String"
+					},
+					{
+						"name": "city",
+						"type": "String"
+					},
+					{
+						"name": "district",
+						"type": "String"
+					},
+					{
+						"name": "sale_price",
+						"type": "String"
+					},
+					{
+						"name": "price_psf",
+						"type": "String"
+					},
+					{
+						"name": "builtup_area_sqft",
+						"type": "String"
+					},
+					{
+						"name": "building_type",
+						"type": "String"
+					},
+					{
+						"name": "floors",
+						"type": "String"
+					},
+					{
+						"name": "lot_status",
+						"type": "String"
+					},
+					{
+						"name": "lot_type",
+						"type": "String"
+					},
+					{
+						"name": "ownership_type",
+						"type": "String"
+					},
+					{
+						"name": "lease_type",
+						"type": "String"
+					},
+					{
+						"name": "rooms",
+						"type": "String"
+					},
+					{
+						"name": "state",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorageLinkedService')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/VMS_Database_clone')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "VMSDatabaseLinkedService",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "date_of_sale",
+						"type": "date"
+					},
+					{
+						"name": "street",
+						"type": "varchar"
+					},
+					{
+						"name": "area",
+						"type": "varchar"
+					},
+					{
+						"name": "city",
+						"type": "varchar"
+					},
+					{
+						"name": "district",
+						"type": "varchar"
+					},
+					{
+						"name": "state_place",
+						"type": "varchar"
+					},
+					{
+						"name": "sale_price",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "price_psf",
+						"type": "decimal",
+						"precision": 10,
+						"scale": 2
+					},
+					{
+						"name": "builtup_area_sqft",
+						"type": "decimal",
+						"precision": 10,
+						"scale": 2
+					},
+					{
+						"name": "building_type",
+						"type": "varchar"
+					},
+					{
+						"name": "floors",
+						"type": "decimal",
+						"precision": 8,
+						"scale": 2
+					},
+					{
+						"name": "lot_status",
+						"type": "varchar"
+					},
+					{
+						"name": "lot_type",
+						"type": "varchar"
+					},
+					{
+						"name": "ownership_type",
+						"type": "varchar"
+					},
+					{
+						"name": "lease_type",
+						"type": "varchar"
+					},
+					{
+						"name": "rooms",
+						"type": "int",
+						"precision": 10
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "hr1000"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/VMSDatabaseLinkedService')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/CopyCSV2SQL')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -546,14 +735,14 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "hr100",
+								"referenceName": "highrise_CSV_clone",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "VMS_Database",
+								"referenceName": "VMS_Database_clone",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -563,8 +752,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/hr100')]",
-				"[concat(variables('factoryId'), '/datasets/VMS_Database')]"
+				"[concat(variables('factoryId'), '/datasets/highrise_CSV_clone')]",
+				"[concat(variables('factoryId'), '/datasets/VMS_Database_clone')]"
 			]
 		}
 	]
