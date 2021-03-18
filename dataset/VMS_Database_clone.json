@@ -83,7 +83,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "hr10000"
+			"table": "hr100000"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
