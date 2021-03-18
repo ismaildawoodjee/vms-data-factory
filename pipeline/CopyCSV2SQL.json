@@ -252,13 +252,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "hr100",
+						"referenceName": "highrise_CSV_clone",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "VMS_Database",
+						"referenceName": "VMS_Database_clone",
 						"type": "DatasetReference"
 					}
 				]
