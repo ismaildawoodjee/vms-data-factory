@@ -11,11 +11,11 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "hr_100000.csv",
+				"fileName": "hr_100.txt",
 				"folderPath": "test",
 				"fileSystem": "vms-container"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": "\t",
 			"escapeChar": "\"",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
