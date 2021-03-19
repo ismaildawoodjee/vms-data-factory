@@ -38,13 +38,13 @@
 				"precision": 10
 			},
 			{
-				"name": "price_psf",
+				"name": "builtup_area_sqft",
 				"type": "decimal",
 				"precision": 10,
 				"scale": 2
 			},
 			{
-				"name": "builtup_area_sqft",
+				"name": "price_psf",
 				"type": "decimal",
 				"precision": 10,
 				"scale": 2
@@ -52,12 +52,6 @@
 			{
 				"name": "building_type",
 				"type": "varchar"
-			},
-			{
-				"name": "floors",
-				"type": "decimal",
-				"precision": 8,
-				"scale": 2
 			},
 			{
 				"name": "lot_status",
@@ -79,11 +73,17 @@
 				"name": "rooms",
 				"type": "int",
 				"precision": 10
+			},
+			{
+				"name": "floors",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
 			}
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "hr100000"
+			"table": "hr100"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
