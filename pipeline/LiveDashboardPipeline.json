@@ -3,27 +3,6 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Scrape VMS Data",
-				"type": "AzureFunctionActivity",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"functionName": "scrapevmsdata",
-					"method": "GET"
-				},
-				"linkedServiceName": {
-					"referenceName": "AzureFunctionLinkedService",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
 				"name": "Data Preparation",
 				"type": "AzureMLExecutePipeline",
 				"dependsOn": [],
