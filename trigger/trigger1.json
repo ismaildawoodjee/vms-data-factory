@@ -1,0 +1,29 @@
+{
+	"name": "trigger1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "LiveDashboardPipeline",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 1,
+				"startTime": "2021-03-22T06:00:00",
+				"timeZone": "Singapore Standard Time",
+				"schedule": {
+					"weekDays": [
+						"Friday"
+					]
+				}
+			}
+		}
+	}
+}

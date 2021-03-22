@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "scrapevmsdata",
+				"name": "Scrape VMS Data",
 				"type": "AzureFunctionActivity",
 				"dependsOn": [],
 				"policy": {
@@ -21,6 +21,49 @@
 				"linkedServiceName": {
 					"referenceName": "AzureFunctionLinkedService",
 					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Data Preparation",
+				"type": "AzureMLExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Scrape VMS Data",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": []
+			},
+			{
+				"name": "Load into SQL",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Data Preparation",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"enableStaging": false
 				}
 			}
 		],
